@@ -29,7 +29,7 @@ You can use the {{site.data.keyword.sqlquery_short}} service to query {{site.dat
 
 ![{{site.data.keyword.cloud_notm}} services integration scenario](images/sqlquery.png "{{site.data.keyword.cloud_notm}} services integration scenario")
 
-Each {{site.data.keyword.at_full_notm}} instance has a service plan associated that indicates the number of days that you can query data through the web UI. To have access to the events after this period, you must enable archiving in the {{site.data.keyword.at_full_notm}} instance. When you enable archiving, you get an archive file daily. This file contains information for the previous day. Notice that UTC timestamps are used to determine which records are included in each file. The file name includes the ID of your {{site.data.keyword.at_full_notm}} instance and the date of the records that are included in the file.
+Each {{site.data.keyword.at_full_notm}} instance has a service plan associated that indicates the number of days that you can query data through the web UI. To have access to the events after this period, you must enable archiving in the {{site.data.keyword.at_full_notm}} instance. When you enable archiving, you get an archive file hourly. This file contains information for the previous hour. Notice that UTC timestamps are used to determine which records are included in each file. The file name includes the ID of your {{site.data.keyword.at_full_notm}} instance and the date and hour of the records that are included in the file.
 
 To query the archive data in a file, you can use the {{site.data.keyword.sqlquery_short}} service. The service offers an SQL editor through the UI, and also programmatic options such as a REST API.
 
@@ -59,7 +59,7 @@ To be able to use the {{site.data.keyword.sqlquery_short}} service to query arch
 
 * You must have an {{site.data.keyword.at_full_notm}} instance provisioned in your account that has [archiving configured to a bucket in the COS instance in your account](/docs/services/Activity-Tracker-with-LogDNA?topic=logdnaat-archiving). 
 
-    Events are archived daily to a file in a COS bucket. 
+    Events are archived hourly to a file in a COS bucket. 
 
     Notice that if archiving is not configured, you must wait at least 24 hours before an archive file is available after archiving is configured.
 
@@ -156,7 +156,7 @@ Complete the following steps:
 
 5. Identify the file that you want to query.
 
-    Notice that the file name has the name of your {{site.data.keyword.at_full_notm}} instance and the date, in UTC format, of the events that are included.
+    Notice that the file name has the name of your {{site.data.keyword.at_full_notm}} instance, the date and time, in UTC format, of the events that are included.
 
     If you get a file of `20 bytes`, that file does not have any data.
 
@@ -208,7 +208,7 @@ Where
 For example, the following query is used to transform an archive file:
 
 ```
-SELECT * FROM cos://ams03/at-logdna-eu-de/999999d8f1f.2019-06-03.62.json.gz STORED AS JSON 
+SELECT * FROM cos://ams03/at-logdna-eu-de/2019/06/03/999999d8f1f.2019-06-03.1200.json.gz STORED AS JSON 
 INTO cos://eu-de/results-at STORED AS PARQUET
 ```
 {: screen}
