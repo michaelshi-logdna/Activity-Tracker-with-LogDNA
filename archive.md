@@ -328,7 +328,7 @@ Complete the following steps to configure archiving of your {{site.data.keyword.
 5. Click **Save**.
 
 
-After you save the configuration, events are archived once a day.
+After you save the configuration, events are archived once an hour.
 
 
 
