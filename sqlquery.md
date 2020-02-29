@@ -208,7 +208,7 @@ Where
 For example, the following query is used to transform an archive file:
 
 ```
-SELECT * FROM cos://ams03/at-logdna-eu-de/2019/06/03/999999d8f1f.2019-06-03.1200.json.gz STORED AS JSON 
+SELECT * FROM cos://ams03/at-logdna-eu-de/year=2019/month=06/day=03/999999d8f1f.2019-06-03.1200.json.gz STORED AS JSON 
 INTO cos://eu-de/results-at STORED AS PARQUET
 ```
 {: screen}
